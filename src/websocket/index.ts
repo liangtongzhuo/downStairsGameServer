@@ -26,7 +26,12 @@ wss.on('connection', async (ws: WebSocket, req: http.IncomingMessage) => {
   });
 
   //发送消息
-  ws.send('{}', (error: Error) => {
-    if (error) console.log('发送 error:', error);
-  });
+  setInterval(() => {
+    const obj = {
+      widthRandom: Math.random()
+    }
+    ws.send(JSON.stringify(obj), (error: Error) => {
+      if (error) console.log('发送 error:', error);
+    });
+  }, 300);
 });
