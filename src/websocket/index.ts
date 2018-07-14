@@ -1,5 +1,11 @@
 import * as WebSocket from 'ws';
 import * as http from 'http';
+import { init } from './init';
+import { message } from './message';
+import { error } from './error';
+import { close } from './close';
+import { broadcast } from './broadcast';
+
 const wss = new WebSocket.Server({ port: 3002 }, () => {
   console.log('socket server start, port:' + 3002);
 });
@@ -8,30 +14,24 @@ wss.on('error', (error: Error) => {
   console.log('wss server error:' + error);
 });
 
-// 有 socket 连接
+// socket 连接
 wss.on('connection', async (ws: WebSocket, req: http.IncomingMessage) => {
-  console.log('ip:', req.headers.host);
-  console.log('url:', req.url);
+  // 初始化一些东西
+  init(ws, req);
 
-  ws.on('message', (data: WebSocket.Data) => {
-    console.log('received: %s', data);
-  });
+  // 处理收到的消息
+  ws.on('message', (data: WebSocket.Data) => message(data));
 
-  ws.on('error', (err: Error) => {
-    console.log('wsError:', err);
-  });
+  // 错误信息
+  ws.on('error', (err: Error) => error(err));
 
-  ws.on('close', (code: number, message: string) => {
-    console.log('wsClose:', code, message);
-  });
+  // 关闭以后清理信息
+  ws.on('close', (code: number, message: string) => close(code, message));
 
-  //发送消息
+  // 广播任务
   setInterval(() => {
-    const obj = {
-      widthRandom: Math.random()
-    }
-    ws.send(JSON.stringify(obj), (error: Error) => {
-      if (error) console.log('发送 error:', error);
+    broadcast(wss, {
+      widthRandom: Math.random(),
     });
-  }, 300);
+  }, 600);
 });
