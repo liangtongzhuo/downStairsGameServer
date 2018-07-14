@@ -20,7 +20,7 @@ wss.on('connection', async (ws: WebSocket, req: http.IncomingMessage) => {
   init(ws, req);
 
   // 处理收到的消息
-  ws.on('message', (data: WebSocket.Data) => message(data));
+  ws.on('message', (data: string) => message(data, ws));
 
   // 错误信息
   ws.on('error', (err: Error) => error(err));
@@ -29,9 +29,9 @@ wss.on('connection', async (ws: WebSocket, req: http.IncomingMessage) => {
   ws.on('close', (code: number, message: string) => close(code, message));
 
   // 广播任务
-  setInterval(() => {
-    broadcast(wss, {
-      widthRandom: Math.random(),
-    });
-  }, 600);
+  // setInterval(() => {
+  //   broadcast(wss, {
+  //     widthRandom: Math.random(),
+  //   });
+  // }, 1000);
 });
