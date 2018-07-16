@@ -1,6 +1,7 @@
-import * as WebSocket from 'ws';
 import FloorModel from '../model/floor-model';
-export const message = async (data: string, ws: WebSocket) => {
+import WS from "../model/ws";
+
+export const message = async (data: string, ws: WS) => {
   console.log('wsMessage: %s', data);
   const obj = JSON.parse(data) as any;
 
@@ -10,7 +11,7 @@ export const message = async (data: string, ws: WebSocket) => {
 /**
  * 创地图
  */
-const initMap = (ws: WebSocket) => {
+const initMap = (ws: WS) => {
   const date = Date.now();
   const floors: FloorModel[] = [];
   for (let index = 0; index < 100; index++) {

@@ -1,5 +1,6 @@
 import * as WebSocket from 'ws';
 import * as http from 'http';
+import WS from './model/ws';
 import { init } from './init';
 import { message } from './message';
 import { error } from './error';
@@ -15,12 +16,12 @@ wss.on('error', (error: Error) => {
 });
 
 // socket 连接
-wss.on('connection', async (ws: WebSocket, req: http.IncomingMessage) => {
+wss.on('connection', async(ws: WebSocket, req: http.IncomingMessage) => {
   // 初始化一些东西
-  init(ws, req);
+  init(ws as WS, req);
 
   // 处理收到的消息
-  ws.on('message', (data: string) => message(data, ws));
+  ws.on('message', (data: string) => message(data, ws as WS));
 
   // 错误信息
   ws.on('error', (err: Error) => error(err));
