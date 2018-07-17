@@ -16,7 +16,7 @@ wss.on('error', (error: Error) => {
 });
 
 // socket 连接
-wss.on('connection', async(ws: WebSocket, req: http.IncomingMessage) => {
+wss.on('connection', async (ws: WebSocket, req: http.IncomingMessage) => {
   // 初始化一些东西
   init(ws as WS, req);
 
@@ -27,7 +27,7 @@ wss.on('connection', async(ws: WebSocket, req: http.IncomingMessage) => {
   ws.on('error', error);
 
   // 关闭以后清理信息
-  ws.on('close',close);
+  ws.on('close', close);
 
   // 广播任务
   // setInterval(() => {
