@@ -24,10 +24,10 @@ wss.on('connection', async(ws: WebSocket, req: http.IncomingMessage) => {
   ws.on('message', (data: string) => message(data, ws as WS));
 
   // 错误信息
-  ws.on('error', (err: Error) => error(err));
+  ws.on('error', error);
 
   // 关闭以后清理信息
-  ws.on('close', (code: number, message: string) => close(code, message));
+  ws.on('close',close);
 
   // 广播任务
   // setInterval(() => {
