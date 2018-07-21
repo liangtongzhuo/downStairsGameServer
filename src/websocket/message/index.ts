@@ -1,5 +1,5 @@
 import FloorModel from '../model/floor-model';
-import WS from "../model/ws";
+import WS from "../base/ws";
 
 export const message = async (data: string, ws: WS) => {
   console.log('wsMessage: %s', data);

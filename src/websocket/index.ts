@@ -1,6 +1,6 @@
 import * as WebSocket from 'ws';
 import * as http from 'http';
-import WS from './model/ws';
+import WS from './base/ws';
 import { init } from './init';
 import { message } from './message';
 import { error } from './error';

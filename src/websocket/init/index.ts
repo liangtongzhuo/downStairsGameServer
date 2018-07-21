@@ -1,5 +1,5 @@
 import * as http from 'http';
-import WS from "../model/ws";
+import WS from "../base/ws";
 
 export const init = async (ws: WS, req: http.IncomingMessage) => {
   ws.userId = 'aaaaaa';
