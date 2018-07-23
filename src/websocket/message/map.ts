@@ -8,6 +8,7 @@ export default class Map {
   public mapData = {
     mesName: 'initMap',
     floors: [new FloorModel(0, 0, 0)],
+    date: 0,
   };
   /**
    * 地图展示时间
@@ -19,13 +20,13 @@ export default class Map {
   private floorTime = 700;
 
   constructor() {
-    this.initMap;
+    this.initMap();
     setInterval(() => {
-      this.initMap;
-    }, 3 * 60 * 1000);
+      this.initMap();
+    }, this.showTime);
   }
 
-  public send(ws: WS){
+  public send(ws: WS) {
     ws.send(JSON.stringify(this.mapData), (error: Error) => {
       if (error) console.log('发送 error:', error);
     });
@@ -40,5 +41,6 @@ export default class Map {
     }
 
     this.mapData.floors = floors;
+    this.mapData.date = date;
   }
 }
