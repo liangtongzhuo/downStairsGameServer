@@ -28,15 +28,15 @@ export default class Map {
 
   public send(ws: WS) {
     ws.send(JSON.stringify(this.mapData), (error: Error) => {
-      if (error) console.log('发送 error:', error);
+      if (error) console.log('map，发送 error:', error);
     });
   }
 
   private initMap() {
     const date = Date.now();
     const floors: FloorModel[] = [];
-    for (let index = 0; index < this.showTime / this.floorTime; index++) {
-      const floor = new FloorModel(date + index * this.floorTime, Math.random(), index % 2);
+    for (let index = 0; index < 300; index++) {
+      const floor = new FloorModel(Math.random(), index * 50, index % 2);
       floors.push(floor);
     }
 

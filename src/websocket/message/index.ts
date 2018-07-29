@@ -1,4 +1,3 @@
-import FloorModel from '../model/floor-model';
 import WS from '../base/ws';
 import Map from './map';
 
