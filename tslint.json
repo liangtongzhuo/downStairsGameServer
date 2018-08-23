@@ -5,6 +5,6 @@
   },
   "rules": {
     "no-console": [false],
-    "curly": [false]
+    "curly": [false],
   }
 }
