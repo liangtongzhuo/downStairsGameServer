@@ -1,3 +1,3 @@
-import './app';
+// import './app';
 import './websocket';
-import './mysql/models';
+import './mysql';
