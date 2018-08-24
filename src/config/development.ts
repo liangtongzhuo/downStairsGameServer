@@ -1,15 +1,15 @@
 module.exports = {
   mysql: {
-    database: 'local-riot-match',
+    dialect: 'mysql',
+    port: 10010,
+    host: 'cdb-45ua41re.cd.tencentcdb.com',
+    database: 'games',
     username: 'root',
-    password: 'password',
-    options: {
-      host: 'localhost',
-      dialect: 'mysql',
-      port: 3306,
-      timezone: '+08:00',
-      // logging: sql => {},
-      operatorsAliases: false,
+    password: 'daoJ8hao',
+    modelPaths: [__dirname + '/models'],
+    timezone: '+08:00',
+    logging: (sql: any) => {
+      console.log(sql);
     },
   },
 };

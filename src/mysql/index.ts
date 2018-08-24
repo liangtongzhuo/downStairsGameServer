@@ -1,15 +1,7 @@
+const config = require('../config');
 import { Sequelize } from 'sequelize-typescript';
 
-const sequelize = new Sequelize({
-  dialect: 'mysql',
-  port: 3306,
-  host: '132',
-  database: '123',
-  username: '123',
-  password: '123',
-  // modelPaths: [__dirname + '/models'],
-});
-
+const sequelize = new Sequelize(config.mysql);
 sequelize
   .sync({ force: true })
   .then(async () => {
