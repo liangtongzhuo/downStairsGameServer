@@ -9,3 +9,5 @@ npm-debug.log
 
 dist/
 
+src/config/development.ts
+
