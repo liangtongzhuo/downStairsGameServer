@@ -2,14 +2,17 @@ import {
   Table,
   Column,
   Model,
-  Length,
   DataType,
   PrimaryKey,
   AutoIncrement,
+  Length,
+  Default,
+  AllowNull,
 } from 'sequelize-typescript';
 
 @Table({
   tableName: 'user',
+  timestamps: true,
 })
 export default class User extends Model<User> {
   @PrimaryKey
@@ -17,7 +20,13 @@ export default class User extends Model<User> {
   @Column
   id!: number;
 
-  @Length({ min: 1, max: 40, msg: 'wrong length' })
+  @Length({ min: 3, max: 15, msg: 'wrong length' })
+  @Default('0123')
+  @AllowNull(false)
   @Column(DataType.STRING)
   name!: string;
+
+  static aaa() {
+    return this.findAll({});
+  }
 }

@@ -1,3 +1,5 @@
+const config = require('../config');
+
 import * as WebSocket from 'ws';
 import * as http from 'http';
 import WS from './base/ws';
@@ -7,8 +9,8 @@ import { error } from './error';
 import { close } from './close';
 import { broadcast } from './broadcast';
 
-const wss = new WebSocket.Server({ port: 3002 }, () => {
-  console.log('socket server start, port:' + 3002);
+const wss = new WebSocket.Server({ port: config.webSocketPort }, () => {
+  console.log(`socket server start, port:${config.webSocketPort}`);
 });
 // wss 服务器启动失败
 wss.on('error', (error: Error) => {

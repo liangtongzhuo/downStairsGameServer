@@ -6,6 +6,5 @@ module.exports = {
     database: '333',
     username: '222',
     password: '111',
-    modelPaths: [__dirname + '/models'],
   },
 };
