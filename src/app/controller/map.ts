@@ -1,17 +1,17 @@
-import Router from 'koa-router';
+import Koa from 'koa';
 
-const mapInit = (ctx: Router.IRouterContext, next: () => Promise<any>) => {
+const mapInit = (ctx: Koa.Context, next: () => Promise<any>) => {
   ctx.body = 123;
 
-//   const date = Date.now();
-//   const floors: FloorModel[] = [];
-//   for (let index = 0; index < 300; index++) {
-//     const floor = new FloorModel(Math.random(), index * 50, index % 2);
-//     floors.push(floor);
-//   }
+  //   const date = Date.now();
+  //   const floors: FloorModel[] = [];
+  //   for (let index = 0; index < 300; index++) {
+  //     const floor = new FloorModel(Math.random(), index * 50, index % 2);
+  //     floors.push(floor);
+  //   }
 
-//   this.mapData.floors = floors;
-//   this.mapData.date = date;
+  //   this.mapData.floors = floors;
+  //   this.mapData.date = date;
 };
 
 export default mapInit;

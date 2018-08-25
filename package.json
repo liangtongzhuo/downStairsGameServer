@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
     "@types/koa-router": "^7.0.28",
     "@types/ws": "^5.1.2",
     "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
