@@ -17,16 +17,19 @@ const mapInit = async (ctx: Koa.Context, next: () => Promise<any>) => {
   await next();
 };
 
+export default mapInit;
+
+
 const setIntervalInit = () => {
   date = Date.now();
   floors = [];
 
-  for (let index = 0; index < 500; index++) {
+  for (let index = 0; index < 100; index++) {
     const floor = new FloorModel(Math.random(), index * 50, index % 2);
     floors.push(floor);
   }
 };
 setIntervalInit();
-setInterval(setIntervalInit, 5 * 60 * 1000);
+setInterval(setIntervalInit, 1 * 60 * 1000);
 
-export default mapInit;
+
